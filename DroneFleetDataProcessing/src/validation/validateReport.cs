@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
+//using src.drone;
 
 namespace ConsoleApp1.DroneFleetDataProcessing.src.validation
 {
@@ -30,8 +31,6 @@ namespace ConsoleApp1.DroneFleetDataProcessing.src.validation
         };
 
         // ביטוי רגולרי לפורמט המספר הסידורי: בדיוק DR- ואז 4 ספרות.
-        // ה-Regex מקומפל מראש (Compiled) לביצועים טובים יותר כשמשתמשים
-        // בו הרבה פעמים (פעם אחת לכל רחפן בקובץ).
         private static readonly Regex SerialNumberPattern =
             new(@"^DR-\d{4}$", RegexOptions.Compiled);
 

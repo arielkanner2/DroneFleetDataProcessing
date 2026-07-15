@@ -1,16 +1,16 @@
 ﻿using System;
 
-using src.drone;
+//using src.drone;
 
 namespace ConsoleApp1.DroneFleetDataProcessing.src;
 
-class M
-{
-    public static void Main()
-    {
+//class M
+//{
+//    public static void Main()
+//    {
         
-    }
-}
+//    }
+//}
 class Statistics
 {
     public List<string> NotOperationalStatus(List<DroneReport> droneReports)
