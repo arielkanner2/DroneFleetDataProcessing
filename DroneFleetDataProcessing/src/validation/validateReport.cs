@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
-//using src.drone;
+
 
 namespace ConsoleApp1.DroneFleetDataProcessing.src.validation
 {
@@ -83,9 +83,11 @@ namespace ConsoleApp1.DroneFleetDataProcessing.src.validation
             // רחפן עם בריאות סוללה נמוכה מ-20 אינו יכול להיות Operational.
             if (drone.BatteryHealth < 20 && drone.Status == "Operational")
                 return false;
-
+            
             // הרשומה עברה את כל הבדיקות - היא תקינה.
+           
             return true;
+            
         }
     }
 
