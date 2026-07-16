@@ -8,6 +8,8 @@ namespace ConsoleApp1.DroneFleetDataProcessing.src.validation
     {
         public void PrintAll(List<DroneReport> validReports, int totalNumber)
         {
+            if (File.Exists("txt.report_analysis"))
+            { File.WriteAllText("txt.report_analysis", ""); }
             File.AppendAllText("txt.report_analysis", $"DRONE FLEET ANALYSIS REPORT\n\nPROCESSING SUMMARY\nTotal raw records: {totalNumber}\nValid records: {validReports.Count()}\nRejected records: {totalNumber-validReports.Count()}");
             Statistics statistics = new();
 

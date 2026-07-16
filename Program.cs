@@ -70,20 +70,21 @@ namespace ConsoleApp1.program
                 Console.WriteLine();
 
                 // ---------- שלב 5: ניתוח הנתונים ----------
-                
-                printStistics.PrintAll(cleanDrones, rawDrones.Count);
-                //Console.WriteLine("Step 5: Performing analysis...");
+
+
+                Console.WriteLine("Step 5: Performing analysis...");
                 //var analysisResult = analyzer.Analyze(reloadedDrones);
-                //Console.WriteLine("Analysis completed successfully");
-                //Console.WriteLine();
+                Console.WriteLine("Analysis completed successfully");
+                Console.WriteLine();
 
                 //// ---------- שלב 6: הפקת הדוח ----------
-                //Console.WriteLine("Step 6: Generating report...");
+                Console.WriteLine("Step 6: Generating report...");
                 //string reportText = reportGenerator.Generate(
                 //    analysisResult, rawDrones.Count, cleanDrones.Count, rejectedCount);
                 //reportWriter.WriteReport(reportFilePath, reportText);
-                //Console.WriteLine($"Report generated successfully: {reportFilePath}");
-                //Console.WriteLine();
+                printStistics.PrintAll(cleanDrones, rawDrones.Count);
+                Console.WriteLine($"Report generated successfully: {reportFilePath}");
+                Console.WriteLine();
 
                 Console.WriteLine("=== Process completed successfully! ===");
             }
