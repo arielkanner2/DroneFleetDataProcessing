@@ -22,8 +22,17 @@ class M
                 validReports.Add(droneReport);
             }
         }
-        int total = validReports.Count();
-        Console.WriteLine(total);
+        int total = reports.Count();
+        //Console.WriteLine(total);
+
+        //Statistics statistics = new();
+        //List<string> allModels = statistics.ThreeModelsHighestAvgFlightHours(validReports);
+        //foreach (var model in allModels)
+        //{
+        //    Console.WriteLine(model);
+        //}
+        PrintStistics printStistics = new();
+        printStistics.PrintAll(validReports, total);
     }
 }
 interface IReadable
@@ -40,7 +49,7 @@ class ReadJson : IReadable
             //string reportsText = File.ReadAllText("C:\\Users\\User\\Desktop\\New folder (3)\\ConsoleApp1\\DroneFleetDataProcessing\\input\\test_scenarios\\drones_empty.json");
             //string reportsText = File.ReadAllText("C:\\Users\\User\\Desktop\\New folder (3)\\ConsoleApp1\\DroneFleetDataProcessing\\input\\test_scenarios\\drones_null.json");
             //string reportsText = File.ReadAllText("C:\\Users\\User\\Desktop\\New folder (3)\\ConsoleApp1\\DroneFleetDataProcessing\\input\\test_scenarios\\drones_malformed.json");
-            string reportsText = File.ReadAllText("C:\\Users\\user1\\OneDrive\\שולחן העבודה\\DroneFleetDataProcessing\\DroneFleetDataProcessing\\DroneFleetDataProcessing\\input\\raw\\drones_raw.json");
+            string reportsText = File.ReadAllText("C:\\Users\\User\\Desktop\\New folder (3)\\ConsoleApp1\\DroneFleetDataProcessing\\input\\raw\\drones_raw.json");
             reports = JsonSerializer.Deserialize<List<DroneReport>>(reportsText) ??new();
 
             //int total = reports.Count();
