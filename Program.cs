@@ -23,6 +23,7 @@ namespace ConsoleApp1.program
             //string cleanFilePath = Path.Combine(outputDirectory, "drones_clean.json");
             string reportFilePath = Path.Combine(outputDirectory, "report_analysis.txt");
             RunPipeline(a, t, reportFilePath);
+            
         }
         private static void RunPipeline(string rawFilePath, string cleanFilePath, string reportFilePath)
         {
@@ -30,6 +31,7 @@ namespace ConsoleApp1.program
             IDroneValidator droneValidator = new DroneValidator();
             var datasetBuilder = new CleanDatasetBuilder();
             var cleanFileWriter = new JsonDroneFileWriter();
+            PrintStistics printStistics = new();
             //var analyzer = new DroneAnalyzer();
             //var reportGenerator = new ReportGenerator();
             //var reportWriter = new TextReportWriter();
@@ -68,6 +70,8 @@ namespace ConsoleApp1.program
                 Console.WriteLine();
 
                 // ---------- שלב 5: ניתוח הנתונים ----------
+                
+                printStistics.PrintAll(cleanDrones, rawDrones.Count);
                 //Console.WriteLine("Step 5: Performing analysis...");
                 //var analysisResult = analyzer.Analyze(reloadedDrones);
                 //Console.WriteLine("Analysis completed successfully");
