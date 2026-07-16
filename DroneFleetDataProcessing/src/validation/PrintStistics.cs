@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using ConsoleApp1.DroneFleetDataProcessing.src.dataAccess;
 
 namespace ConsoleApp1.DroneFleetDataProcessing.src.validation
 {
-    class PrintStistics
+    class PrintStisticsToFile : IWriteStatisticsable
     {
-        public void PrintAll(List<DroneReport> validReports, int totalNumber)
+        public void Write(List<DroneReport> validReports, int totalNumber)
         {
             if (File.Exists("txt.report_analysis"))
             { File.WriteAllText("txt.report_analysis", ""); }

@@ -5,7 +5,7 @@ using System.Text.Json;
 
 namespace ConsoleApp1.DroneFleetDataProcessing.src.dataAccess
 {
-    public class JsonDroneFileWriter
+    public class JsonDroneFileWriter : IWriteValidDronesable
     {
         public void WriteCleanDrones(string filePath, List<DroneReport> drones)
         {

@@ -18,20 +18,20 @@ namespace ConsoleApp1.program
 
             string rawFilePath = Path.Combine(projectRoot, "input", "raw", "drones_raw.json");
             string outputDirectory = Path.Combine(projectRoot, "output");
-            string a = "C:\\Users\\user1\\OneDrive\\שולחן העבודה\\DroneFleetDataProcessing\\DroneFleetDataProcessing\\DroneFleetDataProcessing\\input\\raw\\drones_raw.json";
-            string t = "C:\\Users\\user1\\OneDrive\\שולחן העבודה\\DroneFleetDataProcessing\\DroneFleetDataProcessing\\DroneFleetDataProcessing\\output\\drones_clean.json";
+            string a = "C:\\Users\\User\\Desktop\\New folder (3)\\ConsoleApp1\\DroneFleetDataProcessing\\input\\raw\\drones_raw.json";
+            string t = "C:\\Users\\User\\Desktop\\New folder (3)\\ConsoleApp1\\DroneFleetDataProcessing\\output\\drones_clean.json";
             //string cleanFilePath = Path.Combine(outputDirectory, "drones_clean.json");
             string reportFilePath = Path.Combine(outputDirectory, "report_analysis.txt");
-            RunPipeline(a, t, reportFilePath);
-            
+            IReadable jsonRead = new ReadJson();
+            IWriteValidDronesable cleanFileWriterToJson = new JsonDroneFileWriter();
+            IWriteStatisticsable printStisticsToFile = new PrintStisticsToFile();
+            RunPipeline(a, t, reportFilePath, jsonRead, printStisticsToFile, cleanFileWriterToJson);
         }
-        private static void RunPipeline(string rawFilePath, string cleanFilePath, string reportFilePath)
+        private static void RunPipeline(string rawFilePath, string cleanFilePath, string reportFilePath, IReadable reader, IWriteStatisticsable printStistics, IWriteValidDronesable writeValidDronesable)
         {
-            IReadable dataSource = new ReadJson();
             IDroneValidator droneValidator = new DroneValidator();
             var datasetBuilder = new CleanDatasetBuilder();
-            var cleanFileWriter = new JsonDroneFileWriter();
-            PrintStistics printStistics = new();
+            //var cleanFileWriter = new JsonDroneFileWriter();
             //var analyzer = new DroneAnalyzer();
             //var reportGenerator = new ReportGenerator();
             //var reportWriter = new TextReportWriter();
@@ -39,7 +39,7 @@ namespace ConsoleApp1.program
             {
                 // ---------- שלב 1 ----------
                 Console.WriteLine("Step 1: Reading raw data...");
-                var rawDrones = dataSource.Read(rawFilePath);
+                var rawDrones = reader.Read(rawFilePath);
                 Console.WriteLine($"Read {rawDrones.Count} records from raw file");
                 Console.WriteLine();
 
@@ -58,14 +58,14 @@ namespace ConsoleApp1.program
 
                 // ---------- שלב 3 ----------
                 Console.WriteLine("Step 3: Saving clean data...");
-                cleanFileWriter.WriteCleanDrones(cleanFilePath, cleanDrones);
+                writeValidDronesable.WriteCleanDrones(cleanFilePath, cleanDrones);
                 Console.WriteLine($"Clean data saved to: {cleanFilePath}");
                 Console.WriteLine();
 
                 // ---------- שלב 4 ----------
 
                 Console.WriteLine("Step 4: Reloading clean data...");
-                var reloadedDrones = dataSource.Read(cleanFilePath);
+                var reloadedDrones = reader.Read(cleanFilePath);
                 Console.WriteLine($"Loaded {reloadedDrones.Count} records from clean dataset");
                 Console.WriteLine();
 
@@ -82,7 +82,7 @@ namespace ConsoleApp1.program
                 //string reportText = reportGenerator.Generate(
                 //    analysisResult, rawDrones.Count, cleanDrones.Count, rejectedCount);
                 //reportWriter.WriteReport(reportFilePath, reportText);
-                printStistics.PrintAll(cleanDrones, rawDrones.Count);
+                printStistics.Write(cleanDrones, rawDrones.Count);
                 Console.WriteLine($"Report generated successfully: {reportFilePath}");
                 Console.WriteLine();
 
@@ -99,44 +99,3 @@ namespace ConsoleApp1.program
         }
     }
 }
-
-//}
-
-
-
-//    List<DroneReport>? reports;
-//    ReadJson readJson = new ReadJson();
-//    reports = readJson.Read("");
-//    if (reports != null)
-//    {
-//        CleanDatasetBuilder validDrone = new();
-//        var (cleanDrones, rejectedCount) = validDrone.Build(reports);
-//        JsonDroneFileWriter writeToJson = new();
-//string t = "C:\\Users\\user1\\OneDrive\\שולחן העבודה\\DroneFleetDataProcessing\\DroneFleetDataProcessing\\DroneFleetDataProcessing\\output\\drones_clean.json";
-//        writeToJson.WriteCleanDrones(t, cleanDrones);
-//        int total = cleanDrones.Count();
-//        Console.WriteLine(total);
-//        Console.WriteLine(rejectedCount);
-//    }
-
-
-
-//List<DroneReport> validReports = new();
-//DroneValidator droneValidator = new();
-
-
-//foreach (DroneReport droneReport in reports)
-//{
-//    //Console.WriteLine(droneReport.Id);
-//    if (droneValidator.Validate(droneReport))
-//    {
-//        validReports.Add(droneReport);
-
-//    }
-//}
-
-//        }
-//    }
-
-
-//}
