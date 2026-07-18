@@ -1,11 +1,12 @@
-﻿using ConsoleApp1.DroneFleetDataProcessing.src.models;
+﻿using DroneFleetDataProcessing.src.models;
+using DroneFleetDataProcessing.src.statistics;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 
 
-namespace ConsoleApp1.DroneFleetDataProcessing.src.validation
+namespace DroneFleetDataProcessing.src.validation
 {
     public class DroneValidator : IDroneValidator
     {

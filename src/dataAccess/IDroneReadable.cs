@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using DroneFleetDataProcessing.src.models;
 
-namespace ConsoleApp1.DroneFleetDataProcessing.src.dataAccess
+namespace DroneFleetDataProcessing.src.dataAccess
 {
-    interface IReadable
+    public interface IReadable
     {
         List<DroneReport> Read(string path);
     }

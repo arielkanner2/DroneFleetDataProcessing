@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ConsoleApp1.DroneFleetDataProcessing.src.models
+namespace DroneFleetDataProcessing.src.models
 
 {
     public class DroneModel

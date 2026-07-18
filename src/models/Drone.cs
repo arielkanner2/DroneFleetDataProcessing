@@ -1,9 +1,9 @@
-﻿using ConsoleApp1.DroneFleetDataProcessing.src.validation;
+﻿using DroneFleetDataProcessing.src.validation;
 using System;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace ConsoleApp1.DroneFleetDataProcessing.src;
+namespace DroneFleetDataProcessing.src.models;
 public class DroneReport
 {
     [JsonPropertyName("id")]

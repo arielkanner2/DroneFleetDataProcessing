@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using DroneFleetDataProcessing.src.models;
 
-namespace ConsoleApp1.DroneFleetDataProcessing.src.validation
+namespace DroneFleetDataProcessing.src.validation
 {
     public interface IDroneValidator
     {

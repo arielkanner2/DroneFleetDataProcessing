@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Text.Json;
+using DroneFleetDataProcessing.src.models;
 
-namespace ConsoleApp1.DroneFleetDataProcessing.src.dataAccess
+
+
+namespace DroneFleetDataProcessing.src.dataAccess
 {
     class ReadJson : IReadable
     {

@@ -1,16 +1,10 @@
 ﻿using System;
+using DroneFleetDataProcessing.src.models;
 
-//using src.drone;
 
-namespace ConsoleApp1.DroneFleetDataProcessing.src;
 
-//class M
-//{
-//    public static void Main()
-//    {
-        
-//    }
-//}
+namespace DroneFleetDataProcessing.src.statistics;
+
 class Statistics
 {
     public List<string> NotOperationalStatus(List<DroneReport> droneReports)
